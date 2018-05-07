@@ -23,7 +23,6 @@ UOModalViewControllerDelegate
 }
 
 @property (weak, nonatomic) IBOutlet UITextView *mTextview;
-@property (nonatomic, strong) UOModalViewController *mModalViewControler;
 @property (nonatomic, strong) UOShowAnimation *mShowAnimation;//push动画
 @property (nonatomic, strong) UODismissAnimation *mDismissAnimation;//dismiss动画
 @property (nonatomic, strong) UOPanInteractiveTransition *mPanTransation;
@@ -53,18 +52,15 @@ UOModalViewControllerDelegate
 #pragma mark -Actions
 
 - (IBAction)onActions:(id)sender {
-    if (!_mModalViewControler) {
-        _mModalViewControler = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]]
-                                instantiateViewControllerWithIdentifier:@"UOModal"];
-        _mModalViewControler.transitioningDelegate = self;
-        _mModalViewControler.delegate = self;
-    }
-    
+    UOModalViewController *mModalViewControler = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]]
+                                                  instantiateViewControllerWithIdentifier:@"UOModal"];
+    mModalViewControler.transitioningDelegate = self;
+    mModalViewControler.delegate = self;
     if (!_mPanTransation) {
         _mPanTransation = [UOPanInteractiveTransition new];
-        [_mPanTransation setUps:_mModalViewControler];
+        [_mPanTransation setUps:mModalViewControler];
     }
-    [self presentViewController:_mModalViewControler animated:YES completion:NULL];
+    [self presentViewController:mModalViewControler animated:YES completion:NULL];
 }
 
 #pragma mark -UIViewController Transation Delegate
@@ -108,7 +104,8 @@ shouldInteractWithURL:(NSURL *)URL
 
 -(void)modalViewControllerDidClickedDismissButton:(id)viewController
 {
-    [self dismissViewControllerAnimated:YES completion:NULL];
+    [self dismissViewControllerAnimated:YES completion:^{
+    }];
 }
 
 #pragma mark -Text Delegate

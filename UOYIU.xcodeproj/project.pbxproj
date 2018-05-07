@@ -12,6 +12,8 @@
 		0A8393CA209B141900EA1F84 /* UODismissAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A8393C9209B141900EA1F84 /* UODismissAnimation.m */; };
 		0A8393D1209B1B0200EA1F84 /* UOShowAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A8393D0209B1B0200EA1F84 /* UOShowAnimation.m */; };
 		0A8393D7209B4AC200EA1F84 /* UOModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A8393D6209B4AC200EA1F84 /* UOModalViewController.m */; };
+		0A8393DB20A087A000EA1F84 /* JSOCHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A8393DA20A087A000EA1F84 /* JSOCHelper.m */; };
+		0A8393DE20A0A48300EA1F84 /* UOWKScriptMessageHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A8393DD20A0A48300EA1F84 /* UOWKScriptMessageHandler.m */; };
 		0ABB986020909EEE00079444 /* UOTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ABB985F20909EEE00079444 /* UOTableViewController.m */; };
 		0AEE625C2046ECF1000714BD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AEE625B2046ECF1000714BD /* AppDelegate.m */; };
 		0AEE625F2046ECF1000714BD /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AEE625E2046ECF1000714BD /* ViewController.m */; };
@@ -33,6 +35,10 @@
 		0A8393D0209B1B0200EA1F84 /* UOShowAnimation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UOShowAnimation.m; sourceTree = "<group>"; };
 		0A8393D5209B4AC200EA1F84 /* UOModalViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UOModalViewController.h; sourceTree = "<group>"; };
 		0A8393D6209B4AC200EA1F84 /* UOModalViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UOModalViewController.m; sourceTree = "<group>"; };
+		0A8393D920A087A000EA1F84 /* JSOCHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSOCHelper.h; sourceTree = "<group>"; };
+		0A8393DA20A087A000EA1F84 /* JSOCHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSOCHelper.m; sourceTree = "<group>"; };
+		0A8393DC20A0A48300EA1F84 /* UOWKScriptMessageHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UOWKScriptMessageHandler.h; sourceTree = "<group>"; };
+		0A8393DD20A0A48300EA1F84 /* UOWKScriptMessageHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UOWKScriptMessageHandler.m; sourceTree = "<group>"; };
 		0ABB985E20909EEE00079444 /* UOTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UOTableViewController.h; sourceTree = "<group>"; };
 		0ABB985F20909EEE00079444 /* UOTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UOTableViewController.m; sourceTree = "<group>"; };
 		0AEE62572046ECF1000714BD /* UOYIU.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UOYIU.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -97,6 +103,17 @@
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
+		0A8393D820A0872F00EA1F84 /* Webview */ = {
+			isa = PBXGroup;
+			children = (
+				0A8393D920A087A000EA1F84 /* JSOCHelper.h */,
+				0A8393DA20A087A000EA1F84 /* JSOCHelper.m */,
+				0A8393DC20A0A48300EA1F84 /* UOWKScriptMessageHandler.h */,
+				0A8393DD20A0A48300EA1F84 /* UOWKScriptMessageHandler.m */,
+			);
+			path = Webview;
+			sourceTree = "<group>";
+		};
 		0AEE624E2046ECF1000714BD = {
 			isa = PBXGroup;
 			children = (
@@ -120,6 +137,7 @@
 				0AEE625B2046ECF1000714BD /* AppDelegate.m */,
 				0A8393CB209B178600EA1F84 /* ViewControllers */,
 				0A8393BD209B0E9200EA1F84 /* AnimateTransition */,
+				0A8393D820A0872F00EA1F84 /* Webview */,
 				0A8393BE209B0EAC00EA1F84 /* Models */,
 				0AEE62602046ECF1000714BD /* Main.storyboard */,
 				0AEE62632046ECF1000714BD /* Assets.xcassets */,
@@ -204,7 +222,9 @@
 				0A8393CA209B141900EA1F84 /* UODismissAnimation.m in Sources */,
 				0A8393D7209B4AC200EA1F84 /* UOModalViewController.m in Sources */,
 				0AEE625F2046ECF1000714BD /* ViewController.m in Sources */,
+				0A8393DE20A0A48300EA1F84 /* UOWKScriptMessageHandler.m in Sources */,
 				0A8393D1209B1B0200EA1F84 /* UOShowAnimation.m in Sources */,
+				0A8393DB20A087A000EA1F84 /* JSOCHelper.m in Sources */,
 				0A36188F207FB52300273CC8 /* People.m in Sources */,
 				0AF45B9E2080E776001F9765 /* Model.m in Sources */,
 				0AEE626A2046ECF1000714BD /* main.m in Sources */,

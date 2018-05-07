@@ -72,19 +72,46 @@
                                     <action selector="onActions:" destination="Skd-Ul-m8o" eventType="touchUpInside" id="YJf-gD-HOk"/>
                                 </connections>
                             </button>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QSR-kp-qx7">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="365"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M77-t2-9Fa">
+                                <rect key="frame" x="0.0" y="447" width="375" height="365"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <outlet property="delegate" destination="Skd-Ul-m8o" id="1af-Cf-hGj"/>
+                                </connections>
+                            </webView>
                         </subviews>
                         <color key="backgroundColor" red="0.9728141427" green="0.83285562049999995" blue="0.13782157240000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="YBN-ij-L2g" firstAttribute="centerY" secondItem="GpT-up-add" secondAttribute="centerY" id="3jq-zH-TZ4"/>
+                            <constraint firstItem="QSR-kp-qx7" firstAttribute="trailing" secondItem="5EM-Ng-9uP" secondAttribute="trailing" id="49p-Fh-MC6"/>
+                            <constraint firstItem="M77-t2-9Fa" firstAttribute="top" secondItem="YBN-ij-L2g" secondAttribute="bottom" constant="30" id="5kQ-In-c5j"/>
+                            <constraint firstItem="M77-t2-9Fa" firstAttribute="trailing" secondItem="5EM-Ng-9uP" secondAttribute="trailing" id="9h2-2x-w9H"/>
+                            <constraint firstAttribute="bottom" secondItem="M77-t2-9Fa" secondAttribute="bottom" id="Glx-cb-NvN"/>
                             <constraint firstItem="YBN-ij-L2g" firstAttribute="centerX" secondItem="GpT-up-add" secondAttribute="centerX" id="Grn-HC-IDP"/>
+                            <constraint firstItem="QSR-kp-qx7" firstAttribute="leading" secondItem="5EM-Ng-9uP" secondAttribute="leading" id="TkK-Zy-Nja"/>
+                            <constraint firstItem="M77-t2-9Fa" firstAttribute="leading" secondItem="5EM-Ng-9uP" secondAttribute="leading" id="YF8-9Q-0dA"/>
+                            <constraint firstItem="QSR-kp-qx7" firstAttribute="top" secondItem="GpT-up-add" secondAttribute="top" id="cyG-5R-7Z7"/>
+                            <constraint firstItem="YBN-ij-L2g" firstAttribute="top" secondItem="QSR-kp-qx7" secondAttribute="bottom" constant="30" id="gpg-sd-5oo"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="5EM-Ng-9uP"/>
                     </view>
                     <navigationItem key="navigationItem" id="Ss0-i9-eAI"/>
+                    <connections>
+                        <outlet property="mUIWebview" destination="M77-t2-9Fa" id="4fa-eQ-gQV"/>
+                        <outlet property="mWKWebview" destination="QSR-kp-qx7" id="DB0-2g-52N"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ScL-Pf-grU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2161" y="143"/>
+            <point key="canvasLocation" x="2160.8000000000002" y="142.61083743842366"/>
         </scene>
         <!--Table View Controller-->
         <scene sceneID="FJJ-hd-wKH">
@@ -130,7 +157,6 @@
         <!--Navigation Controller-->
         <scene sceneID="ZSB-Zx-ixu">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="74z-h2-MbA" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bun-nZ-LGe" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="vBI-rI-zp6">
@@ -142,6 +168,7 @@
                         <segue destination="97Y-Wp-nwe" kind="relationship" relationship="rootViewController" id="kxL-Ag-vlH"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="74z-h2-MbA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="415" y="824"/>
         </scene>

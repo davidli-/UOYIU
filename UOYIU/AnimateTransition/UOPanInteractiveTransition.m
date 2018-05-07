@@ -10,7 +10,7 @@
 
 @interface UOPanInteractiveTransition()
 @property (nonatomic, assign) BOOL shouldComplete;
-@property(nonatomic,strong)UIViewController *mModalViewControler;
+@property(nonatomic,weak)UIViewController *mModalViewControler;
 @end
 
 @implementation UOPanInteractiveTransition
