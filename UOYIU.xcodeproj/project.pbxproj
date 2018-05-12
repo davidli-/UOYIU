@@ -15,6 +15,7 @@
 		0A8393DB20A087A000EA1F84 /* JSOCHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A8393DA20A087A000EA1F84 /* JSOCHelper.m */; };
 		0A8393DE20A0A48300EA1F84 /* UOWKScriptMessageHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A8393DD20A0A48300EA1F84 /* UOWKScriptMessageHandler.m */; };
 		0ABB986020909EEE00079444 /* UOTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ABB985F20909EEE00079444 /* UOTableViewController.m */; };
+		0ADC53D020A6CDEE0030DA5E /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0ADC53CE20A6CDEE0030DA5E /* Model.xcdatamodeld */; };
 		0AEE625C2046ECF1000714BD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AEE625B2046ECF1000714BD /* AppDelegate.m */; };
 		0AEE625F2046ECF1000714BD /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AEE625E2046ECF1000714BD /* ViewController.m */; };
 		0AEE62622046ECF1000714BD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0AEE62602046ECF1000714BD /* Main.storyboard */; };
@@ -41,6 +42,7 @@
 		0A8393DD20A0A48300EA1F84 /* UOWKScriptMessageHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UOWKScriptMessageHandler.m; sourceTree = "<group>"; };
 		0ABB985E20909EEE00079444 /* UOTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UOTableViewController.h; sourceTree = "<group>"; };
 		0ABB985F20909EEE00079444 /* UOTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UOTableViewController.m; sourceTree = "<group>"; };
+		0ADC53CF20A6CDEE0030DA5E /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		0AEE62572046ECF1000714BD /* UOYIU.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UOYIU.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AEE625A2046ECF1000714BD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		0AEE625B2046ECF1000714BD /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 				0AEE62652046ECF1000714BD /* LaunchScreen.storyboard */,
 				0AEE62682046ECF1000714BD /* Info.plist */,
 				0AEE62692046ECF1000714BD /* main.m */,
+				0ADC53CE20A6CDEE0030DA5E /* Model.xcdatamodeld */,
 			);
 			path = UOYIU;
 			sourceTree = "<group>";
@@ -230,6 +233,7 @@
 				0AEE626A2046ECF1000714BD /* main.m in Sources */,
 				0AEE625C2046ECF1000714BD /* AppDelegate.m in Sources */,
 				0ABB986020909EEE00079444 /* UOTableViewController.m in Sources */,
+				0ADC53D020A6CDEE0030DA5E /* Model.xcdatamodeld in Sources */,
 				0A8393C7209B10F100EA1F84 /* UOPanInteractiveTransition.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -484,6 +488,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		0ADC53CE20A6CDEE0030DA5E /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				0ADC53CF20A6CDEE0030DA5E /* Model.xcdatamodel */,
+			);
+			currentVersion = 0ADC53CF20A6CDEE0030DA5E /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 0AEE624F2046ECF1000714BD /* Project object */;
 }
