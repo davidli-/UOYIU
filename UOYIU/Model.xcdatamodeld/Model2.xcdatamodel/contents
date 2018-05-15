@@ -7,10 +7,11 @@
     <entity name="Person" representedClassName="Person" syncable="YES" codeGenerationType="class">
         <attribute name="age" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sex" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="card" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Card" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Card" positionX="-171" positionY="117" width="128" height="75"/>
-        <element name="Person" positionX="-36" positionY="9" width="128" height="90"/>
+        <element name="Card" positionX="-171" positionY="123" width="128" height="73"/>
+        <element name="Person" positionX="-36" positionY="9" width="128" height="103"/>
     </elements>
 </model>

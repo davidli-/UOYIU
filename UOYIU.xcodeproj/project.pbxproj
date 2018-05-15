@@ -14,6 +14,7 @@
 		0A8393D7209B4AC200EA1F84 /* UOModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A8393D6209B4AC200EA1F84 /* UOModalViewController.m */; };
 		0A8393DB20A087A000EA1F84 /* JSOCHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A8393DA20A087A000EA1F84 /* JSOCHelper.m */; };
 		0A8393DE20A0A48300EA1F84 /* UOWKScriptMessageHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A8393DD20A0A48300EA1F84 /* UOWKScriptMessageHandler.m */; };
+		0A86992E20AB2EE1009DE0F7 /* MapModelToMadel2.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = 0A86992D20AB2EE1009DE0F7 /* MapModelToMadel2.xcmappingmodel */; };
 		0ABB986020909EEE00079444 /* UOTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ABB985F20909EEE00079444 /* UOTableViewController.m */; };
 		0ADC53D020A6CDEE0030DA5E /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0ADC53CE20A6CDEE0030DA5E /* Model.xcdatamodeld */; };
 		0AEE625C2046ECF1000714BD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AEE625B2046ECF1000714BD /* AppDelegate.m */; };
@@ -40,6 +41,8 @@
 		0A8393DA20A087A000EA1F84 /* JSOCHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSOCHelper.m; sourceTree = "<group>"; };
 		0A8393DC20A0A48300EA1F84 /* UOWKScriptMessageHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UOWKScriptMessageHandler.h; sourceTree = "<group>"; };
 		0A8393DD20A0A48300EA1F84 /* UOWKScriptMessageHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UOWKScriptMessageHandler.m; sourceTree = "<group>"; };
+		0A86992C20A9DDBE009DE0F7 /* Model2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model2.xcdatamodel; sourceTree = "<group>"; };
+		0A86992D20AB2EE1009DE0F7 /* MapModelToMadel2.xcmappingmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcmappingmodel; path = MapModelToMadel2.xcmappingmodel; sourceTree = "<group>"; };
 		0ABB985E20909EEE00079444 /* UOTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UOTableViewController.h; sourceTree = "<group>"; };
 		0ABB985F20909EEE00079444 /* UOTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UOTableViewController.m; sourceTree = "<group>"; };
 		0ADC53CF20A6CDEE0030DA5E /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
@@ -147,6 +150,7 @@
 				0AEE62682046ECF1000714BD /* Info.plist */,
 				0AEE62692046ECF1000714BD /* main.m */,
 				0ADC53CE20A6CDEE0030DA5E /* Model.xcdatamodeld */,
+				0A86992D20AB2EE1009DE0F7 /* MapModelToMadel2.xcmappingmodel */,
 			);
 			path = UOYIU;
 			sourceTree = "<group>";
@@ -224,6 +228,7 @@
 			files = (
 				0A8393CA209B141900EA1F84 /* UODismissAnimation.m in Sources */,
 				0A8393D7209B4AC200EA1F84 /* UOModalViewController.m in Sources */,
+				0A86992E20AB2EE1009DE0F7 /* MapModelToMadel2.xcmappingmodel in Sources */,
 				0AEE625F2046ECF1000714BD /* ViewController.m in Sources */,
 				0A8393DE20A0A48300EA1F84 /* UOWKScriptMessageHandler.m in Sources */,
 				0A8393D1209B1B0200EA1F84 /* UOShowAnimation.m in Sources */,
@@ -493,6 +498,7 @@
 		0ADC53CE20A6CDEE0030DA5E /* Model.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				0A86992C20A9DDBE009DE0F7 /* Model2.xcdatamodel */,
 				0ADC53CF20A6CDEE0030DA5E /* Model.xcdatamodel */,
 			);
 			currentVersion = 0ADC53CF20A6CDEE0030DA5E /* Model.xcdatamodel */;

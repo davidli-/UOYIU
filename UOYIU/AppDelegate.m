@@ -47,21 +47,46 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
     NSString *filePath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
     NSURL *url = [NSURL fileURLWithPath:[filePath stringByAppendingPathComponent:@"person.sqlite"] isDirectory:NO];
     ///*测试代码
-    if ([[NSFileManager defaultManager] fileExistsAtPath:url.path]) {
-        [[NSFileManager defaultManager] removeItemAtPath:url.path error:nil];
-    }
+//    if ([[NSFileManager defaultManager] fileExistsAtPath:url.path]) {
+//        [[NSFileManager defaultManager] removeItemAtPath:url.path error:nil];
+//    }
     //*/
     //添加持久化存储库，这里使用SQLite作为存储库：
-    NSPersistentStore *store = [psc addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:url options:nil error:nil];
+    NSError *storeError;
+    NSDictionary *options = @{NSMigratePersistentStoresAutomaticallyOption:@(YES),
+                              NSInferMappingModelAutomaticallyOption:@(NO)};//InferMapping=YES时 系统会自动推断映射模型 =NO时，使用我们自定义的映射模型
+    NSPersistentStore *store = [psc addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:url options:options error:&storeError];
     if (!store) {
-        NSLog(@"加载数据库时出错！");
+        NSLog(@"加载数据库时出错:%@",[storeError userInfo]);
     }else{
         NSLog(@"成功加载数据库!");
     }
     //初始化上下文，设置persistentStoreCoordinator属性：
     NSManagedObjectContext *context = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
     context.persistentStoreCoordinator = psc;
+    context.mergePolicy = NSErrorMergePolicy;//冲突合并策略
     _context = context;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(onHandleSaveNotification:)
+                                                 name:NSManagedObjectContextDidSaveNotification
+                                               object:nil];
+}
+
+- (void)onHandleSaveNotification:(NSNotification*)notification
+{
+    /*
+     NSManagedObjectContext是非线程安全的，所以不能跨线程传递使用。
+     而通知是同步执行的，在通知对应的回调方法中所处的线程，和发出通知的MOC执行操作时所处的线程是同一个线程，也就是系统performBlock:回调方法分配的线程。
+     所以其他MOC在通知回调方法中，需要注意使用performBlock:方法，并在block体中执行操作。
+     */
+    NSManagedObjectContext *context = notification.object;
+    // 这里需要做判断操作，判断当前改变的MOC是否我们将要做同步的MOC，如果就是当前MOC自己做的改变，那就不需要再同步自己了。
+    // 由于项目中可能存在多个PSC，所以下面还需要判断PSC是否当前操作的PSC，如果不是当前PSC则不需要同步，不要去同步其他本地存储的数据。
+    
+    [context performBlock:^{
+        [context mergeChangesFromContextDidSaveNotification:notification];
+    }];
 }
 
 #pragma mark -数据库操作
@@ -80,8 +105,9 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
         
         //设置Person和Card之间的关联关系：
         [person setValue:card forKey:@"card"];
-        
-        //利用上下文对象，将数据同步到持久化存储库：
+    }
+    //利用上下文对象，将数据同步到持久化存储库：
+    [_context performBlockAndWait:^{
         NSError *error;
         [_context save:&error];
         if (error) {
@@ -89,7 +115,7 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
         }else{
             NSLog(@"+++++++++成功保存数据入库!");
         }
-    }
+    }];
 }
 
 - (void)deleteData
@@ -112,7 +138,9 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
             [_context deleteObject:p];
             NSLog(@"++++成功删除Person：%@！",[p valueForKey:@"name"]);
         }
-        [_context save:nil];
+        [_context performBlockAndWait:^{
+            [_context save:nil];
+        }];
     }
 }
 
@@ -141,7 +169,9 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
             NSLog(@"++++更新前Name:%@,更新后Name:%@",pName,newName);
         }
         //保存
-        [_context save:nil];
+        [_context performBlockAndWait:^{
+            [_context save:nil];
+        }];
     }
 }
 
