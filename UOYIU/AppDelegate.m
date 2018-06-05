@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "UOSubObject.h"
 
 @interface AppDelegate()
 @property (nonatomic, strong) NSManagedObjectContext *context;
@@ -16,6 +17,12 @@
 
 - (BOOL)application:(UIApplication *)application
 didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
+    return YES;
+}
+
+#pragma mark -Business
+- (void)coreDataTest
 {
     [self initContext];
     
@@ -28,11 +35,8 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
     //改
     [self deleteData];
     [self queryData];
-    
-    return YES;
 }
 
-#pragma mark -Business
 - (void)initContext
 {
     //从应用程序包中加载模型文件

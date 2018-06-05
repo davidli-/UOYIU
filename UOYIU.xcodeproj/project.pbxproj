@@ -15,6 +15,8 @@
 		0A8393DB20A087A000EA1F84 /* JSOCHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A8393DA20A087A000EA1F84 /* JSOCHelper.m */; };
 		0A8393DE20A0A48300EA1F84 /* UOWKScriptMessageHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A8393DD20A0A48300EA1F84 /* UOWKScriptMessageHandler.m */; };
 		0A86992E20AB2EE1009DE0F7 /* MapModelToMadel2.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = 0A86992D20AB2EE1009DE0F7 /* MapModelToMadel2.xcmappingmodel */; };
+		0A86999120B2A86A009DE0F7 /* UOBaseObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A86999020B2A86A009DE0F7 /* UOBaseObject.m */; };
+		0A86999920B2C9E1009DE0F7 /* UOSubObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A86999820B2C9E1009DE0F7 /* UOSubObject.m */; };
 		0ABB986020909EEE00079444 /* UOTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ABB985F20909EEE00079444 /* UOTableViewController.m */; };
 		0ADC53D020A6CDEE0030DA5E /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0ADC53CE20A6CDEE0030DA5E /* Model.xcdatamodeld */; };
 		0AEE625C2046ECF1000714BD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AEE625B2046ECF1000714BD /* AppDelegate.m */; };
@@ -43,6 +45,11 @@
 		0A8393DD20A0A48300EA1F84 /* UOWKScriptMessageHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UOWKScriptMessageHandler.m; sourceTree = "<group>"; };
 		0A86992C20A9DDBE009DE0F7 /* Model2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model2.xcdatamodel; sourceTree = "<group>"; };
 		0A86992D20AB2EE1009DE0F7 /* MapModelToMadel2.xcmappingmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcmappingmodel; path = MapModelToMadel2.xcmappingmodel; sourceTree = "<group>"; };
+		0A86998F20B2A869009DE0F7 /* UOBaseObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UOBaseObject.h; sourceTree = "<group>"; };
+		0A86999020B2A86A009DE0F7 /* UOBaseObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UOBaseObject.m; sourceTree = "<group>"; };
+		0A86999620B2C78F009DE0F7 /* ModelSerialiseHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ModelSerialiseHelper.h; sourceTree = "<group>"; };
+		0A86999720B2C9E1009DE0F7 /* UOSubObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UOSubObject.h; sourceTree = "<group>"; };
+		0A86999820B2C9E1009DE0F7 /* UOSubObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UOSubObject.m; sourceTree = "<group>"; };
 		0ABB985E20909EEE00079444 /* UOTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UOTableViewController.h; sourceTree = "<group>"; };
 		0ABB985F20909EEE00079444 /* UOTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UOTableViewController.m; sourceTree = "<group>"; };
 		0ADC53CF20A6CDEE0030DA5E /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
@@ -119,6 +126,18 @@
 			path = Webview;
 			sourceTree = "<group>";
 		};
+		0A86999220B2A887009DE0F7 /* RuntimeHelper */ = {
+			isa = PBXGroup;
+			children = (
+				0A86998F20B2A869009DE0F7 /* UOBaseObject.h */,
+				0A86999020B2A86A009DE0F7 /* UOBaseObject.m */,
+				0A86999720B2C9E1009DE0F7 /* UOSubObject.h */,
+				0A86999820B2C9E1009DE0F7 /* UOSubObject.m */,
+				0A86999620B2C78F009DE0F7 /* ModelSerialiseHelper.h */,
+			);
+			path = RuntimeHelper;
+			sourceTree = "<group>";
+		};
 		0AEE624E2046ECF1000714BD = {
 			isa = PBXGroup;
 			children = (
@@ -144,6 +163,7 @@
 				0A8393BD209B0E9200EA1F84 /* AnimateTransition */,
 				0A8393D820A0872F00EA1F84 /* Webview */,
 				0A8393BE209B0EAC00EA1F84 /* Models */,
+				0A86999220B2A887009DE0F7 /* RuntimeHelper */,
 				0AEE62602046ECF1000714BD /* Main.storyboard */,
 				0AEE62632046ECF1000714BD /* Assets.xcassets */,
 				0AEE62652046ECF1000714BD /* LaunchScreen.storyboard */,
@@ -230,6 +250,7 @@
 				0A8393D7209B4AC200EA1F84 /* UOModalViewController.m in Sources */,
 				0A86992E20AB2EE1009DE0F7 /* MapModelToMadel2.xcmappingmodel in Sources */,
 				0AEE625F2046ECF1000714BD /* ViewController.m in Sources */,
+				0A86999920B2C9E1009DE0F7 /* UOSubObject.m in Sources */,
 				0A8393DE20A0A48300EA1F84 /* UOWKScriptMessageHandler.m in Sources */,
 				0A8393D1209B1B0200EA1F84 /* UOShowAnimation.m in Sources */,
 				0A8393DB20A087A000EA1F84 /* JSOCHelper.m in Sources */,
@@ -240,6 +261,7 @@
 				0ABB986020909EEE00079444 /* UOTableViewController.m in Sources */,
 				0ADC53D020A6CDEE0030DA5E /* Model.xcdatamodeld in Sources */,
 				0A8393C7209B10F100EA1F84 /* UOPanInteractiveTransition.m in Sources */,
+				0A86999120B2A86A009DE0F7 /* UOBaseObject.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
