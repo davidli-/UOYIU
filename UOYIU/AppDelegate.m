@@ -7,7 +7,6 @@
 //
 
 #import "AppDelegate.h"
-#import "UYDatabase.h"
 
 @interface AppDelegate()
 @end
@@ -17,8 +16,6 @@
 - (BOOL)application:(UIApplication *)application
 didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    UYDatabase *database = [UYDatabase shareInstance];
-    [database coreDataTest];
     return YES;
 }
 @end

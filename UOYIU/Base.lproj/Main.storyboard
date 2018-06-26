@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="D7o-tC-qWh">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="AgQ-nl-cXi">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -57,6 +57,34 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jec-81-ZZl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1311" y="143"/>
+        </scene>
+        <!--Masonry Viwe Controller-->
+        <scene sceneID="8WO-Pb-rxH">
+            <objects>
+                <viewController id="AgQ-nl-cXi" customClass="UYMasonryViweController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="PKp-3z-dQn">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="detailDisclosure" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EIG-5h-dHf">
+                                <rect key="frame" x="176" y="756" width="22" height="22"/>
+                                <color key="backgroundColor" red="0.91372549020000005" green="0.36862745099999999" blue="0.3921568627" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="onClickAction:" destination="AgQ-nl-cXi" eventType="touchUpInside" id="aph-oz-ze5"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="EIG-5h-dHf" firstAttribute="centerX" secondItem="PKp-3z-dQn" secondAttribute="centerX" id="AEU-9z-ocn"/>
+                            <constraint firstItem="EIG-5h-dHf" firstAttribute="bottom" secondItem="wAl-W1-hXX" secondAttribute="bottom" id="EUO-9g-xGi"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="wAl-W1-hXX"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rug-zj-U6J" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1310" y="825"/>
         </scene>
         <!--Modal View Controller-->
         <scene sceneID="qS4-9j-3zT">
@@ -152,7 +180,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F72-R9-haa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1310" y="839"/>
+            <point key="canvasLocation" x="3841" y="143"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ZSB-Zx-ixu">
@@ -170,7 +198,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="74z-h2-MbA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="415" y="824"/>
+            <point key="canvasLocation" x="2990" y="143"/>
         </scene>
     </scenes>
 </document>

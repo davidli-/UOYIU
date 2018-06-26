@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0A36188F207FB52300273CC8 /* People.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A36188E207FB52300273CC8 /* People.m */; };
 		0A418ABF20E253A0004297E8 /* UYDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A418ABE20E253A0004297E8 /* UYDatabase.m */; };
+		0A418AC420E262E8004297E8 /* UYMasonryViweController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A418AC320E262E8004297E8 /* UYMasonryViweController.m */; };
 		0A8393C7209B10F100EA1F84 /* UOPanInteractiveTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A8393C6209B10F100EA1F84 /* UOPanInteractiveTransition.m */; };
 		0A8393CA209B141900EA1F84 /* UODismissAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A8393C9209B141900EA1F84 /* UODismissAnimation.m */; };
 		0A8393D1209B1B0200EA1F84 /* UOShowAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A8393D0209B1B0200EA1F84 /* UOShowAnimation.m */; };
@@ -27,6 +28,7 @@
 		0AEE62672046ECF1000714BD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0AEE62652046ECF1000714BD /* LaunchScreen.storyboard */; };
 		0AEE626A2046ECF1000714BD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AEE62692046ECF1000714BD /* main.m */; };
 		0AF45B9E2080E776001F9765 /* Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF45B9D2080E776001F9765 /* Model.m */; };
+		FA5B1AA6B32B3E0A1DC4E133 /* libPods-UOYIU.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FD06ABCE49B14440D6EC710 /* libPods-UOYIU.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		0A36188E207FB52300273CC8 /* People.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = People.m; sourceTree = "<group>"; };
 		0A418ABD20E253A0004297E8 /* UYDatabase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UYDatabase.h; sourceTree = "<group>"; };
 		0A418ABE20E253A0004297E8 /* UYDatabase.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UYDatabase.m; sourceTree = "<group>"; };
+		0A418AC220E262E8004297E8 /* UYMasonryViweController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UYMasonryViweController.h; sourceTree = "<group>"; };
+		0A418AC320E262E8004297E8 /* UYMasonryViweController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UYMasonryViweController.m; sourceTree = "<group>"; };
 		0A8393C5209B10F100EA1F84 /* UOPanInteractiveTransition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UOPanInteractiveTransition.h; sourceTree = "<group>"; };
 		0A8393C6209B10F100EA1F84 /* UOPanInteractiveTransition.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UOPanInteractiveTransition.m; sourceTree = "<group>"; };
 		0A8393C8209B141900EA1F84 /* UODismissAnimation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UODismissAnimation.h; sourceTree = "<group>"; };
@@ -68,6 +72,10 @@
 		0AEE62692046ECF1000714BD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		0AF45B9C2080E776001F9765 /* Model.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Model.h; sourceTree = "<group>"; };
 		0AF45B9D2080E776001F9765 /* Model.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Model.m; sourceTree = "<group>"; };
+		4FD06ABCE49B14440D6EC710 /* libPods-UOYIU.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-UOYIU.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		83B3176D18362DE4156866A5 /* Pods-UOYIU.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UOYIU.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UOYIU/Pods-UOYIU.debug.xcconfig"; sourceTree = "<group>"; };
+		DEFE7633713A7F7A7958B03F /* Pods-UOYIU.inhouse.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UOYIU.inhouse.xcconfig"; path = "Pods/Target Support Files/Pods-UOYIU/Pods-UOYIU.inhouse.xcconfig"; sourceTree = "<group>"; };
+		EDACC1AF14C7CDD64D6D5056 /* Pods-UOYIU.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UOYIU.release.xcconfig"; path = "Pods/Target Support Files/Pods-UOYIU/Pods-UOYIU.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +83,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA5B1AA6B32B3E0A1DC4E133 /* libPods-UOYIU.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,6 +97,15 @@
 				0A418ABE20E253A0004297E8 /* UYDatabase.m */,
 			);
 			path = Database;
+			sourceTree = "<group>";
+		};
+		0A418AC120E262C0004297E8 /* Masonry */ = {
+			isa = PBXGroup;
+			children = (
+				0A418AC220E262E8004297E8 /* UYMasonryViweController.h */,
+				0A418AC320E262E8004297E8 /* UYMasonryViweController.m */,
+			);
+			path = Masonry;
 			sourceTree = "<group>";
 		};
 		0A8393BD209B0E9200EA1F84 /* AnimateTransition */ = {
@@ -138,7 +156,7 @@
 			path = Webview;
 			sourceTree = "<group>";
 		};
-		0A86999220B2A887009DE0F7 /* RuntimeHelper */ = {
+		0A86999220B2A887009DE0F7 /* Runtime */ = {
 			isa = PBXGroup;
 			children = (
 				0A86998F20B2A869009DE0F7 /* UOBaseObject.h */,
@@ -147,7 +165,7 @@
 				0A86999820B2C9E1009DE0F7 /* UOSubObject.m */,
 				0A86999620B2C78F009DE0F7 /* ModelSerialiseHelper.h */,
 			);
-			path = RuntimeHelper;
+			path = Runtime;
 			sourceTree = "<group>";
 		};
 		0AEE624E2046ECF1000714BD = {
@@ -155,6 +173,8 @@
 			children = (
 				0AEE62592046ECF1000714BD /* UOYIU */,
 				0AEE62582046ECF1000714BD /* Products */,
+				65ACDA49CE8BB7D399CBEC70 /* Pods */,
+				CA350E55F8740B5FF4886318 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -173,10 +193,11 @@
 				0AEE625B2046ECF1000714BD /* AppDelegate.m */,
 				0A8393CB209B178600EA1F84 /* ViewControllers */,
 				0A8393BD209B0E9200EA1F84 /* AnimateTransition */,
+				0A418AC120E262C0004297E8 /* Masonry */,
 				0A8393D820A0872F00EA1F84 /* Webview */,
 				0A8393BE209B0EAC00EA1F84 /* Models */,
 				0A418ABC20E252E8004297E8 /* Database */,
-				0A86999220B2A887009DE0F7 /* RuntimeHelper */,
+				0A86999220B2A887009DE0F7 /* Runtime */,
 				0AEE62602046ECF1000714BD /* Main.storyboard */,
 				0AEE62632046ECF1000714BD /* Assets.xcassets */,
 				0AEE62652046ECF1000714BD /* LaunchScreen.storyboard */,
@@ -188,6 +209,24 @@
 			path = UOYIU;
 			sourceTree = "<group>";
 		};
+		65ACDA49CE8BB7D399CBEC70 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				83B3176D18362DE4156866A5 /* Pods-UOYIU.debug.xcconfig */,
+				EDACC1AF14C7CDD64D6D5056 /* Pods-UOYIU.release.xcconfig */,
+				DEFE7633713A7F7A7958B03F /* Pods-UOYIU.inhouse.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		CA350E55F8740B5FF4886318 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4FD06ABCE49B14440D6EC710 /* libPods-UOYIU.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -195,6 +234,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0AEE626D2046ECF1000714BD /* Build configuration list for PBXNativeTarget "UOYIU" */;
 			buildPhases = (
+				D6BEF09905D6F5714A679FFD /* [CP] Check Pods Manifest.lock */,
 				0AEE62532046ECF1000714BD /* Sources */,
 				0AEE62542046ECF1000714BD /* Frameworks */,
 				0AEE62552046ECF1000714BD /* Resources */,
@@ -254,6 +294,27 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		D6BEF09905D6F5714A679FFD /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-UOYIU-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		0AEE62532046ECF1000714BD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -263,6 +324,7 @@
 				0A8393D7209B4AC200EA1F84 /* UOModalViewController.m in Sources */,
 				0A86992E20AB2EE1009DE0F7 /* MapModelToMadel2.xcmappingmodel in Sources */,
 				0AEE625F2046ECF1000714BD /* ViewController.m in Sources */,
+				0A418AC420E262E8004297E8 /* UYMasonryViweController.m in Sources */,
 				0A86999920B2C9E1009DE0F7 /* UOSubObject.m in Sources */,
 				0A8393DE20A0A48300EA1F84 /* UOWKScriptMessageHandler.m in Sources */,
 				0A8393D1209B1B0200EA1F84 /* UOShowAnimation.m in Sources */,
@@ -353,6 +415,7 @@
 		};
 		0A8393BC2099D6E600EA1F84 /* INHouse */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DEFE7633713A7F7A7958B03F /* Pods-UOYIU.inhouse.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -475,6 +538,7 @@
 		};
 		0AEE626E2046ECF1000714BD /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 83B3176D18362DE4156866A5 /* Pods-UOYIU.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -491,6 +555,7 @@
 		};
 		0AEE626F2046ECF1000714BD /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EDACC1AF14C7CDD64D6D5056 /* Pods-UOYIU.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_ARC = YES;
