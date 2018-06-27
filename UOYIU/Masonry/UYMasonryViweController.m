@@ -27,17 +27,29 @@
     [super didReceiveMemoryWarning];
 }
 
-- (IBAction)onClickAction:(id)sender {
+- (IBAction)onClickAction:(id)sender
+{
+    //打印约束
     NSArray *array = _mView.constraints;
     for (NSLayoutConstraint *constraint in array) {
         NSLog(@"1Attribute:%ld,2Attribute:%ld,1Item:%@,2Item:%@,const:%f",
               (long)constraint.firstAttribute,(long)constraint.secondAttribute,
               [constraint.firstItem class],[constraint.secondItem class],constraint.constant);
     }
+    //更新约束 执行动画
     [_mView mas_updateConstraints:^(MASConstraintMaker *make) {
         make.height.equalTo(@400);
+        
+        /*使用mas_updateConstraints时会保留之前的约束再添加你本次新增的约束。
+         如果出现了相同的设置约束的方法，仅仅是值不同，则会直接替换掉原来的约束。
+         更新约束的语句要与原来相同，不能使用新方法，不然会有冲突。
+         如更新_mvView的高度时使用下面的方法 就会报错：
+         make.width.equalTo(self.view).multipliedBy(0.5);
+         */
     }];
-    [_mView updateConstraintsIfNeeded];
+    [UIView animateWithDuration:1.0f animations:^{
+        [_mView layoutIfNeeded];//这句话放到block中即可 不需要把mas更新约束的语句也放进来
+    }];
 }
 
 
