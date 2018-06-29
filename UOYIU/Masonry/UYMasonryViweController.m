@@ -27,15 +27,16 @@
     [super didReceiveMemoryWarning];
 }
 
+#pragma mark -IBOutlet Action
 - (IBAction)onClickAction:(id)sender
 {
-    //打印约束
+    /*打印约束
     NSArray *array = _mView.constraints;
     for (NSLayoutConstraint *constraint in array) {
         NSLog(@"1Attribute:%ld,2Attribute:%ld,1Item:%@,2Item:%@,const:%f",
               (long)constraint.firstAttribute,(long)constraint.secondAttribute,
               [constraint.firstItem class],[constraint.secondItem class],constraint.constant);
-    }
+    }*/
     //更新约束 执行动画
     [_mView mas_updateConstraints:^(MASConstraintMaker *make) {
         make.height.equalTo(@400);
@@ -52,6 +53,31 @@
     }];
 }
 
+#pragma mark -屏幕旋转Delegate
+- (void)willTransitionToTraitCollection:(UITraitCollection *)newCollection
+             withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
+{
+    [super willTransitionToTraitCollection:newCollection withTransitionCoordinator:coordinator];
+    
+    [coordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext> context) {
+        if (UIUserInterfaceSizeClassCompact == newCollection.verticalSizeClass) {//iPhone 横屏 （w* hC）
+            //重写约束 改变布局
+            [_mView mas_updateConstraints:^(MASConstraintMaker *make) {
+                make.height.equalTo(@100);
+            }];
+            NSLog(@"++++iPhone横屏");
+        }else{
+            //重写约束 改变布局
+            NSLog(@"++++iPhone竖屏");
+        }
+        [self.view setNeedsLayout];
+    } completion:^(id<UIViewControllerTransitionCoordinatorContext> context) {
+    }];
+}
+
+- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator{
+    
+}
 
 #pragma mark -Custom Views
 
