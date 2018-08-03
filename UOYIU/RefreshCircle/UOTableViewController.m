@@ -8,11 +8,15 @@
 
 #import "UOTableViewController.h"
 #import "ViewController.h"
+#import "UORefreshControl.h"
 
 @interface UOTableViewController ()
 {
     NSInteger rows;
 }
+@property (strong, nonatomic) IBOutlet UITableView *mTableView;
+@property (nonatomic, strong) UORefreshControl *mRefreshCotrol;
+
 @end
 
 @implementation UOTableViewController
@@ -24,8 +28,8 @@
     self.title = @"UOYIU";
     if (@available(iOS 11.0, *)) {
         self.tableView.separatorInsetReference = UITableViewSeparatorInsetFromAutomaticInsets;
-        self.navigationController.navigationBar.prefersLargeTitles = YES;
-        self.navigationItem.largeTitleDisplayMode = UINavigationItemLargeTitleDisplayModeAlways;
+        //self.navigationController.navigationBar.prefersLargeTitles = YES;
+        //self.navigationItem.largeTitleDisplayMode = UINavigationItemLargeTitleDisplayModeAlways;
     }
     UIBarButtonItem *bt = [[UIBarButtonItem alloc] initWithTitle:@">1<"
                                                            style:UIBarButtonItemStylePlain
@@ -34,8 +38,25 @@
     self.navigationItem.backBarButtonItem = bt;
 }
 
-- (void)didReceiveMemoryWarning {
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self.mRefreshCotrol createRefreshHeader];
+}
+
+- (void)didReceiveMemoryWarning
+{
     [super didReceiveMemoryWarning];
+}
+
+#pragma mark -Getter Setter
+- (UORefreshControl *)mRefreshCotrol
+{
+    if (!_mRefreshCotrol) {
+        _mRefreshCotrol = [[UORefreshControl alloc] initWithTableview:_mTableView];
+    }
+    return _mRefreshCotrol;
 }
 
 #pragma mark - Table view data source
