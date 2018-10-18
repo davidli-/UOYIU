@@ -10,7 +10,6 @@
 		0A36188F207FB52300273CC8 /* People.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A36188E207FB52300273CC8 /* People.m */; };
 		0A418ABF20E253A0004297E8 /* UYDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A418ABE20E253A0004297E8 /* UYDatabase.m */; };
 		0A418AC420E262E8004297E8 /* UYMasonryViweController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A418AC320E262E8004297E8 /* UYMasonryViweController.m */; };
-		0A4B61D9211464D600D2DD32 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0A4B61D8211464D600D2DD32 /* Info.plist */; };
 		0A4B61DE2114657900D2DD32 /* UORefreshHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4B61DD2114657900D2DD32 /* UORefreshHeader.m */; };
 		0A4B61E1211465EC00D2DD32 /* UORefreshControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4B61E0211465EC00D2DD32 /* UORefreshControl.m */; };
 		0A4B61E42114719600D2DD32 /* UOCircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4B61E32114719600D2DD32 /* UOCircleView.m */; };
@@ -344,7 +343,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0A4B61D9211464D600D2DD32 /* Info.plist in Resources */,
 				0AEE62672046ECF1000714BD /* LaunchScreen.storyboard in Resources */,
 				0AEE62642046ECF1000714BD /* Assets.xcassets in Resources */,
 				0AEE62622046ECF1000714BD /* Main.storyboard in Resources */,
