@@ -139,8 +139,6 @@
 		0A4B61DB2114653100D2DD32 /* RefreshCircle */ = {
 			isa = PBXGroup;
 			children = (
-				0ABB985E20909EEE00079444 /* UOTableViewController.h */,
-				0ABB985F20909EEE00079444 /* UOTableViewController.m */,
 				0A4B61E521148AF400D2DD32 /* UOProgressViewController.h */,
 				0A4B61E621148AF400D2DD32 /* UOProgressViewController.m */,
 				0A4B61E821149A4100D2DD32 /* RefreshControl */,
@@ -190,6 +188,8 @@
 			children = (
 				0AEE625D2046ECF1000714BD /* ViewController.h */,
 				0AEE625E2046ECF1000714BD /* ViewController.m */,
+				0ABB985E20909EEE00079444 /* UOTableViewController.h */,
+				0ABB985F20909EEE00079444 /* UOTableViewController.m */,
 				0A8393D5209B4AC200EA1F84 /* UOModalViewController.h */,
 				0A8393D6209B4AC200EA1F84 /* UOModalViewController.m */,
 			);

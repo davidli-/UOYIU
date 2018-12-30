@@ -141,7 +141,7 @@ completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition disposition, NS
         NSLog(@"+++++WKWebview执行js：%@",jsFuncScript);
     }];
     //JS通过webview中window.webkit.messageHandlers回调OC中定义的函数
-    jsFuncScript = [NSString stringWithFormat:@"window.webkit.messageHandlers.%@.postMessage('This is a mess!');",NativeFunc_Hello];
+    jsFuncScript = [NSString stringWithFormat:@"window.webkit.messageHandlers.%@.postMessage('This is a param!');",NativeFunc_Hello];
     [_mWKWebview evaluateJavaScript:jsFuncScript completionHandler:^(id result, NSError * error) {
         NSLog(@"+++++WKWebview执行js：%@",jsFuncScript);
     }];
@@ -288,9 +288,9 @@ change:(NSDictionary<NSKeyValueChangeKey,id> *)change
     
     //WKUserScript用于往加载的页面中添加额外需要执行的JavaScript代码
     //设置cookie
-    NSString *cookie = [NSString stringWithFormat:@"document.cookie='username=DAVIID'"];
-    WKUserScript *script = [[WKUserScript alloc] initWithSource:cookie
-                                                  injectionTime:WKUserScriptInjectionTimeAtDocumentStart
+    NSString *jsStr = [NSString stringWithFormat:@"alert(\"WKUserScript注入js\");"];
+    WKUserScript *script = [[WKUserScript alloc] initWithSource:jsStr
+                                                  injectionTime:WKUserScriptInjectionTimeAtDocumentStart //js加载前执行
                                                forMainFrameOnly:NO];
     [_mWKWebview.configuration.userContentController addUserScript:script];
     [_mWKWebview loadRequest:request];
