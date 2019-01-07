@@ -11,6 +11,7 @@
 #import "UOShowAnimation.h"
 #import "UODismissAnimation.h"
 #import "UOPanInteractiveTransition.h"
+#import "UOCircleView.h"
 
 @interface ViewController ()
 <UITextViewDelegate,
@@ -23,6 +24,9 @@ UOModalViewControllerDelegate
 }
 
 @property (weak, nonatomic) IBOutlet UITextView *mTextview;
+@property (weak, nonatomic) IBOutlet UISlider *mSlider;
+@property (weak, nonatomic) IBOutlet UOCircleView *mCircleView;
+
 @property (nonatomic, strong) UOShowAnimation *mShowAnimation;//push动画
 @property (nonatomic, strong) UODismissAnimation *mDismissAnimation;//dismiss动画
 @property (nonatomic, strong) UOPanInteractiveTransition *mPanTransation;
@@ -58,9 +62,15 @@ UOModalViewControllerDelegate
     mModalViewControler.delegate = self;
     if (!_mPanTransation) {
         _mPanTransation = [UOPanInteractiveTransition new];
-        [_mPanTransation setUps:mModalViewControler];
     }
+    [_mPanTransation setUps:mModalViewControler];
     [self presentViewController:mModalViewControler animated:YES completion:NULL];
+}
+
+- (IBAction)onSliderUpdates:(id)sender
+{
+    UISlider *slider = sender;
+    [self.mCircleView setProgress:slider.value];
 }
 
 #pragma mark -UIViewController Transation Delegate

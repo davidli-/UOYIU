@@ -227,4 +227,22 @@
     [label1 setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisHorizontal];
     [label2 setContentCompressionResistancePriority:UILayoutPriorityDefaultLow forAxis:UILayoutConstraintAxisHorizontal];
 }
+
+//定位约束冲突
+- (void)testConflictConstraint
+{
+    UIButton *btn1 = [UIButton buttonWithType:UIButtonTypeCustom ];
+    btn1.backgroundColor = [UIColor redColor];
+    MASAttachKeys(btn1);//Masonry 布局冲突快速定位，设置key必须在布局之前设置，否则无效！
+    [self.view addSubview:btn1];
+    [btn1 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.top.offset(80);
+        make.size.mas_equalTo(CGSizeMake(100, 100));
+    }];
+    //    制造约束冲突
+    [btn1 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.top.offset(100);
+        make.size.mas_equalTo(CGSizeMake(100, 100));
+    }];
+}
 @end
