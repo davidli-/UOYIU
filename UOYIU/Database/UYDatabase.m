@@ -8,7 +8,8 @@
 
 #import "UYDatabase.h"
 @interface UYDatabase()
-@property (nonatomic, strong) NSManagedObjectContext *context;
+@property (nonatomic, strong) NSManagedObjectContext *mainQueueContext;
+@property (nonatomic, strong) NSManagedObjectContext *backgroundContext;
 @end
 
 static UYDatabase *mDatabase = nil;
@@ -64,16 +65,47 @@ static UYDatabase *mDatabase = nil;
             NSLog(@"成功加载数据库!");
         }
         
-        //初始化上下文，设置persistentStoreCoordinator属性：
-        NSManagedObjectContext *context = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
-        context.persistentStoreCoordinator = psc;
-        context.mergePolicy = NSErrorMergePolicy;//冲突合并策略
-        _context = context;
+        //初始化运行在主队列上的上下文，处理UI相关事务。
+        NSManagedObjectContext *mainQueueContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
+        mainQueueContext.persistentStoreCoordinator = psc;
+        mainQueueContext.mergePolicy = NSErrorMergePolicy;//冲突合并策略
+        _mainQueueContext = mainQueueContext;
         
+        //iOS5之前，可以使用多个MOC分别在不同队列或线程中执行不同任务，最终在context执行save时手动同步数据
+        //初始化运行在私有队列中的上下文，处理其他复杂运算。
+        NSManagedObjectContext *backgroundContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
+        backgroundContext.persistentStoreCoordinator = psc;
+        backgroundContext.mergePolicy = NSErrorMergePolicy;//冲突合并策略
+        _backgroundContext = backgroundContext;
+        
+        //当一个MOC发生改变并持久化到本地时，系统并不会将其他MOC缓存在内存中的NSManagedObject对象改变。所以这就需要我们监听通知，在MOC发生改变时，将其他MOC数据更新。
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(onHandleSaveNotification:)
                                                      name:NSManagedObjectContextDidSaveNotification
                                                    object:nil];
+        
+        /*在iOS5之后，MOC可以设置parentContext，一个parentContext可以拥有多个ChildContext。在ChildContext执行save操作后，会将操作push到parentContext，由parentContext去完成真正的save操作，而ChildContext所有的改变都会被parentContext所知晓，这解决了之前MOC手动同步数据的问题。
+         需要注意的是，在ChildContext调用save方法之后，此时并没有将数据写入存储区，还需要调用parentContext的save方法。因为ChildContext并不拥有PSC，ChildContext也不需要设置PSC，所以需要parentContext调用PSC来执行真正的save操作。也就是只有拥有PSC的MOC执行save操作后，才是真正的执行了写入存储区的操作。
+         
+         // 创建主队列MOC，用于执行UI操作
+         NSManagedObjectContext *mainMOC = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
+         mainMOC.persistentStoreCoordinator = PSC;
+         
+         // 创建私有队列MOC，用于执行其他耗时操作，backgroundMOC并不需要设置PSC
+         NSManagedObjectContext *backgroundMOC = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
+         backgroundMOC.parentContext = mainMOC;
+         
+         // 私有队列的MOC和主队列的MOC，在执行save操作时，都应该调用performBlock:方法，在自己的队列中执行save操作。
+         // 私有队列的MOC执行完自己的save操作后，还调用了主队列MOC的save方法，来完成真正的持久化操作，否则不能持久化到本地
+         [backgroundMOC performBlock:^{
+         [backgroundMOC save:nil];
+         
+         [mainMOC performBlock:^{
+         [mainMOC save:nil];
+         }];
+         }];
+         
+         */
     }
     return self;
 }
@@ -100,6 +132,13 @@ static UYDatabase *mDatabase = nil;
      */
     NSManagedObjectContext *context = notification.object;
     // 这里需要做判断操作，判断当前改变的MOC是否我们将要做同步的MOC，如果就是当前MOC自己做的改变，那就不需要再同步自己了。
+    if ([context isEqual:_mainQueueContext]) {
+        NSLog(@"++this is on mainQueueContext");
+    }else if ([context isEqual:_backgroundContext]){
+        NSLog(@"++this is on backgroundContext");
+    }else{
+        NSLog(@"++this is on other context");
+    }
     // 由于项目中可能存在多个PSC，所以下面还需要判断PSC是否当前操作的PSC，如果不是当前PSC则不需要同步，不要去同步其他本地存储的数据。
     [context performBlock:^{
         [context mergeChangesFromContextDidSaveNotification:notification];
@@ -112,28 +151,33 @@ static UYDatabase *mDatabase = nil;
     for (int i = 0; i<5; i++) {
         //传入上下文，创建一个Person实体对象：
         NSManagedObject *person = [NSEntityDescription insertNewObjectForEntityForName:@"Person"
-                                                                inManagedObjectContext:_context];
+                                                                inManagedObjectContext:_mainQueueContext];
         //设置属性：
         [person setValue:[NSString stringWithFormat:@"Davii%d",i] forKey:@"name"];
         [person setValue:@(20+i) forKey:@"age"];
         
         //传入上下文，创建一个Card实体对象：
         NSManagedObject *card = [NSEntityDescription insertNewObjectForEntityForName:@"Card"
-                                                              inManagedObjectContext:_context];
+                                                              inManagedObjectContext:_mainQueueContext];
         [card setValue:[NSString stringWithFormat:@"%d",10000+i] forKey:@"no"];
         
         //设置Person和Card之间的关联关系：
         [person setValue:card forKey:@"card"];
     }
     //利用上下文对象，将数据同步到持久化存储库：
-    [_context performBlockAndWait:^{
+    [_mainQueueContext performBlock:^{//异步执行block
+        NSLog(@"%@",[NSThread currentThread]);//因为是异步+主队列context，所以还是在主线程上
+    }];
+    
+    [_mainQueueContext performBlockAndWait:^{//wait表示同步执行block，防止多线程下数据冲突
         NSError *error;
-        [_context save:&error];
+        [_mainQueueContext save:&error];
         if (error) {
             NSLog(@"+++++++++保存数据入库时出错!");
         }else{
             NSLog(@"+++++++++成功保存数据入库!");
         }
+        NSLog(@"增加数据save完成，当前线程：%@",[NSThread currentThread]);//因为是同步+主队列context，所以还是在主线程上执行
     }];
 }
 
@@ -141,7 +185,7 @@ static UYDatabase *mDatabase = nil;
 {
     //建立请求，连接实体
     NSEntityDescription *person = [NSEntityDescription entityForName:@"Person"
-                                              inManagedObjectContext:_context];
+                                              inManagedObjectContext:_mainQueueContext];
     NSFetchRequest *request = [NSFetchRequest new];
     request.entity = person;
     
@@ -151,15 +195,15 @@ static UYDatabase *mDatabase = nil;
     
     //遍历所有实体，将每个实体的信息存放在数组中
     NSError *error;
-    NSArray *resultArr = [_context executeFetchRequest:request error:&error];
+    NSArray *resultArr = [_mainQueueContext executeFetchRequest:request error:&error];
     if (!error && resultArr.count) {
         //删除并保存
         for (NSManagedObject *p in resultArr) {
-            [_context deleteObject:p];
+            [_mainQueueContext deleteObject:p];
             NSLog(@"++++成功删除Person：%@！",[p valueForKey:@"name"]);
         }
-        [_context performBlockAndWait:^{
-            [_context save:nil];
+        [_mainQueueContext performBlockAndWait:^{
+            [_mainQueueContext save:nil];
         }];
     }
 }
@@ -169,7 +213,7 @@ static UYDatabase *mDatabase = nil;
     //建立请求，连接实体
     NSFetchRequest *request = [[NSFetchRequest alloc] init] ;
     NSEntityDescription *person = [NSEntityDescription entityForName:@"Person"
-                                              inManagedObjectContext:_context];
+                                              inManagedObjectContext:_backgroundContext];
     request.entity = person;
     
     //设置条件过滤（搜索name属性为“Davii2”的数据）
@@ -177,7 +221,7 @@ static UYDatabase *mDatabase = nil;
     request.predicate = predicate;
     
     //遍历所有实体，将每个实体的信息存放在数组中
-    NSArray *arr = [_context executeFetchRequest:request error:nil];
+    NSArray *arr = [_backgroundContext executeFetchRequest:request error:nil];
     
     //更改并保存
     NSInteger count = arr.count;
@@ -190,8 +234,12 @@ static UYDatabase *mDatabase = nil;
             NSLog(@"++++更新前Name:%@,更新后Name:%@",pName,newName);
         }
         //保存
-        [_context performBlockAndWait:^{
-            [_context save:nil];
+        [_backgroundContext performBlock:^{
+            NSLog(@"更新数据，当前线程：%@",[NSThread currentThread]);//异步+私有队列context，所以是在子线程中执行
+        }];
+        [_backgroundContext performBlockAndWait:^{
+            [_backgroundContext save:nil];
+            NSLog(@"更新数据save完成，当前线程：%@",[NSThread currentThread]);//因为是同步+私有队列，不具备开辟新线程的能力，所以还是在主线程中执行
         }];
     }
 }
@@ -202,7 +250,7 @@ static UYDatabase *mDatabase = nil;
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
     //设置要查询的实体：
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"Person"
-                                              inManagedObjectContext:_context];
+                                              inManagedObjectContext:_mainQueueContext];
     request.entity = entity;
     
     //设置排序（按照age降序）：
@@ -216,7 +264,7 @@ static UYDatabase *mDatabase = nil;
     
     //执行请求：
     NSError *error = nil;
-    NSArray *objs = [_context executeFetchRequest:request error:&error];
+    NSArray *objs = [_mainQueueContext executeFetchRequest:request error:&error];
     if (error) {
         [NSException raise:@"++++查询错误" format:@"%@", [error localizedDescription]];
     }
